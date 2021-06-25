@@ -35,8 +35,6 @@ public class FileUploadController {
 	@GetMapping("/")
 	public String listUploadedFiles(Model model) throws IOException {
 
-		int size = 100;
-
 		model.addAttribute("files", storageService.loadAll().map(
 				path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
 						"serveFile", path.getFileName().toString()).build().toUri().toString())
